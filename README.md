@@ -148,4 +148,4 @@ This is a private repository for Hurst First. For questions or issues, contact t
 
 ## License
 
-Copyright © 2025 Hurst First. All rights reserved.
+Copyright © 2026 Hurst First. All rights reserved.

@@ -9,8 +9,8 @@ export const mockClientData: ClientInfo = {
   amc: {
     tier: 'Gold',
     status: 'Active',
-    startDate: '2024-01-01',
-    endDate: '2025-01-01',
+    startDate: '2025-01-01',
+    endDate: '2027-01-01',
   },
 };
 
@@ -19,8 +19,8 @@ export const mockTouchpoints: Touchpoint[] = [
   {
     id: '1',
     type: 'quarterly_call',
-    title: 'Q1 2025 Quarterly Review Call',
-    scheduledDate: '2025-03-15',
+    title: 'Q1 2026 Quarterly Review Call',
+    scheduledDate: '2026-03-15',
     status: 'upcoming',
     description: 'Scheduled quarterly check-in to review system performance and address any concerns.',
   },
@@ -28,7 +28,7 @@ export const mockTouchpoints: Touchpoint[] = [
     id: '2',
     type: 'six_month_visit',
     title: '6-Month On-Site Visit',
-    scheduledDate: '2025-07-01',
+    scheduledDate: '2026-07-01',
     status: 'upcoming',
     description: 'Comprehensive on-site visit for system maintenance and optimization.',
   },
@@ -36,21 +36,25 @@ export const mockTouchpoints: Touchpoint[] = [
     id: '3',
     type: 'annual_renewal',
     title: 'Annual AMC Renewal',
-    scheduledDate: '2025-01-01',
+    scheduledDate: '2027-01-01',
     status: 'upcoming',
     description: 'Annual contract renewal discussion and planning for the upcoming year.',
   },
   {
     id: '4',
     type: 'quarterly_call',
-    title: 'Q4 2024 Quarterly Review Call',
-    scheduledDate: '2024-12-15',
+    title: 'Q4 2025 Quarterly Review Call',
+    scheduledDate: '2025-12-15',
     status: 'completed',
     description: 'Quarterly review completed successfully.',
   },
 ];
 
-// Calculate days until expiry
+/**
+ * Calculate the number of days until an AMC contract expires
+ * @param endDate - The contract end date in YYYY-MM-DD format
+ * @returns Number of days until expiry (negative if already expired)
+ */
 export function getDaysUntilExpiry(endDate: string): number {
   const end = new Date(endDate);
   const now = new Date();
@@ -59,7 +63,11 @@ export function getDaysUntilExpiry(endDate: string): number {
   return diffDays;
 }
 
-// Format date for display
+/**
+ * Format a date string for display in British English format
+ * @param dateString - Date string in YYYY-MM-DD format
+ * @returns Formatted date (e.g., "15 March 2023")
+ */
 export function formatDate(dateString: string): string {
   const date = new Date(dateString);
   return date.toLocaleDateString('en-GB', {

@@ -18,9 +18,9 @@ export default function TouchpointsCard({ touchpoints }: TouchpointsCardProps) {
     annual_renewal: '📋 Annual Renewal',
   };
 
-  // Sort touchpoints by date
+  // Sort touchpoints by date (ascending - upcoming events first)
   const sortedTouchpoints = [...touchpoints].sort((a, b) => 
-    new Date(b.scheduledDate).getTime() - new Date(a.scheduledDate).getTime()
+    new Date(a.scheduledDate).getTime() - new Date(b.scheduledDate).getTime()
   );
 
   return (

@@ -57,6 +57,7 @@ export default function AMCRegistrationForm() {
     
     if (validateForm()) {
       // In a real application, this would send data to an API
+      // TODO (v2): Add server-side validation and sanitization to prevent XSS/injection attacks
       console.log('Form submitted:', formData);
       setSubmitted(true);
     }
@@ -117,9 +118,13 @@ export default function AMCRegistrationForm() {
               errors.name ? 'border-red-500' : 'border-gray-300'
             }`}
             placeholder="John Smith"
+            aria-invalid={errors.name ? 'true' : 'false'}
+            aria-describedby={errors.name ? 'name-error' : undefined}
           />
           {errors.name && (
-            <p className="mt-1 text-sm text-red-600">{errors.name}</p>
+            <p id="name-error" className="mt-1 text-sm text-red-600" role="alert">
+              {errors.name}
+            </p>
           )}
         </div>
 
@@ -137,9 +142,13 @@ export default function AMCRegistrationForm() {
               errors.email ? 'border-red-500' : 'border-gray-300'
             }`}
             placeholder="john.smith@example.com"
+            aria-invalid={errors.email ? 'true' : 'false'}
+            aria-describedby={errors.email ? 'email-error' : undefined}
           />
           {errors.email && (
-            <p className="mt-1 text-sm text-red-600">{errors.email}</p>
+            <p id="email-error" className="mt-1 text-sm text-red-600" role="alert">
+              {errors.email}
+            </p>
           )}
         </div>
 
@@ -157,9 +166,13 @@ export default function AMCRegistrationForm() {
               errors.phone ? 'border-red-500' : 'border-gray-300'
             }`}
             placeholder="+44 20 1234 5678"
+            aria-invalid={errors.phone ? 'true' : 'false'}
+            aria-describedby={errors.phone ? 'phone-error' : undefined}
           />
           {errors.phone && (
-            <p className="mt-1 text-sm text-red-600">{errors.phone}</p>
+            <p id="phone-error" className="mt-1 text-sm text-red-600" role="alert">
+              {errors.phone}
+            </p>
           )}
         </div>
 
@@ -177,9 +190,13 @@ export default function AMCRegistrationForm() {
               errors.company ? 'border-red-500' : 'border-gray-300'
             }`}
             placeholder="ABC Corporation"
+            aria-invalid={errors.company ? 'true' : 'false'}
+            aria-describedby={errors.company ? 'company-error' : undefined}
           />
           {errors.company && (
-            <p className="mt-1 text-sm text-red-600">{errors.company}</p>
+            <p id="company-error" className="mt-1 text-sm text-red-600" role="alert">
+              {errors.company}
+            </p>
           )}
         </div>
 
